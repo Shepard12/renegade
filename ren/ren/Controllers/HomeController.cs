@@ -5,14 +5,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ren.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ren.Controllers
 {
     public class HomeController : Controller
     {
+        [Authorize]
         public IActionResult Index()
         {
-            return View();
+            return Content(User.Identity.Name);
         }
 
         public IActionResult About()
