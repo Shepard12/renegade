@@ -59,7 +59,7 @@ namespace ren.Controllers
 
                     await Authenticate(model.Email); // аутентификация
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Contact", "Home");
                 }
                 else
                     ModelState.AddModelError("", "Некорректные логин и(или) пароль");

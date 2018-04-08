@@ -11,10 +11,11 @@ namespace ren.Controllers
 {
     public class HomeController : Controller
     {
-        [Authorize]
         public IActionResult Index()
         {
-            return Content(User.Identity.Name);
+            ViewData["Message"] = "Home page.";
+            return View();
+
         }
 
         public IActionResult About()
@@ -23,12 +24,10 @@ namespace ren.Controllers
 
             return View();
         }
-
+        [Authorize]
         public IActionResult Contact()
         {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
+            return Content(User.Identity.Name);
         }
 
         public IActionResult News()
