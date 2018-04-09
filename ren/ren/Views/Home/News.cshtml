@@ -1,32 +1,7 @@
 ﻿<style>
-    body {
-        font-family: 'Arial', SimSun, sans-serif, 'Apple SD Gothic Neo';
-        font-size: 12px;
-        color: #555;
-    }
-    article,  main, section {
-        display: block;
-    }
-    .main_news_area {
-        padding: 80px 0 80px;
-    }
-    .inner2 {
-        max-width: 1700px;
-        margin: 0 auto;
-        padding: 0 30px;
-    }
-     div, h3, p, ul, li{
-        margin: 0;
-        padding: 0;
-    }
-    .main_news {
-        display: table;
-        width: 100%;
-        margin-bottom: 18px;
-    }
-    div, section {
-        display: block;
-    }
+body { background: url("https://cdn-images-1.medium.com/max/1600/1*K9xJno8xofgnEB8Sw2OBEw.png") no-repeat;
+       background-size:2550px;
+}
     .main_news > a {
         display: table;
         width: 100%;
@@ -34,121 +9,204 @@
         text-decoration: none;
     }
 
-a, a:active, a:hover {
-    text-decoration: none;
-}
+    a, a:active, a:hover {
+        text-decoration: none;
+    }
+
     a {
         color: #555;
         cursor: pointer;
     }
+
     .main_news .img_wrap {
         overflow: hidden;
         position: relative;
-        font-size: 0;
+        font-size: 14px;
         display: table-cell;
-        width: 66.2%;
+        width: 55.2%;
         vertical-align: top;
+    }
+
+    .main_news .img_wrap2 {
+        overflow: hidden;
+        position: relative;
+        font-size: 14px;
+        display: table-cell;
+        vertical-align: top;
+    }
+
+    .main_news .img_wrap2 {
+        overflow: hidden;
+        position: relative;
+        font-size: 14px;
+        display: table-cell;
+        vertical-align: top;
+    }
+
+
+    .card {
+        display: table-cell;
+        border: 2px solid black;
+        background: #fff;
+
+        padding: 42px 50px;
+        vertical-align: top;
+    }
+
+   
+    article, main, section {
+        display: block;
+    }
+
+    .main_news_area {
+        padding: 80px 0 80px;
     }
     .main_news .img_caption {
         display: table-cell;
-        padding: 62px 60px;
-        background: #fff;
+        padding: 62px 20px;
         vertical-align: top;
+        font-size:22px;
+        color:#808080;
+
     }
-        .main_news .img_caption .title {
-            max-height: 108px;
-            margin-top: 28px;
-            font-size: 36px;
-            color: #000;
-            line-height: 36px;
-        }
-        .main_news .img_caption .descrption {
-            max-height: 72px;
-            margin-top: 27px;
-            font-size: 16px;
-            color: #000;
-            line-height: 24px;
-        }
-        .sub_news > .title{
-            font-size:5px;
-        }
-    li {
+    .main_news .img_caption2 {
+        display: table-cell;
         vertical-align: top;
-        display: list-item;
+    
+    }
+    .main_news .img_caption2 {
+        display: table-cell;
+        vertical-align: top;
+        padding: 0px 10px;
     }
 
-    ul, li {
-        list-style: none;
-    }
-    .row {
-        margin-left: -22px;
-    }
-    .lst_view_type.col-3 li {
-        float: left;
-        padding-left: 22px;
-        box-sizing: border-box;
-        width: 33.3%;
+    .main_news {
+        display: table;
+        width: 100%;
+        margin-bottom: 18px;
     }
 
-    .lst_view_type li {
-        float: left;
-        padding-left: 22px;
-        box-sizing: border-box;
-        width: 50%;
+    div, section {
+        display: block;
     }
-  
+    .title1 {
+        color:#ffffff;
+    }
 </style>
 <body>
-    <main id="content">
-        <article class="main_news_area">
-            <div class="inner2">
-                <section class="main_news">
-                    <a href="#">
-                        <div class="img_wrap">
-                            <img width="600" src="~/images/LOGO.jpg" />
-                        </div>
-                        <div class="img_caption">
-                            <h3 class="title" style="word-wrap: break-word;">Soon...</h3>
-                            <p class="descrption" style="word-wrap: break-word;">
-                                Разработка инди-проекта, по вселенной звездных войн, от студии Fly Banana - будет продолжена через 3 месяца.
-                            </p>
-                        </div>
-                    </a>
-                </section>
-            
-                <section class="sub_news">
-                    <ul class="row lst_view_type col-3">
-                        <li>
-                            <a href="#">
-                                <div class="img_wrap"></div>
-                                <img width="200" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Star_Wars_Logo.svg/1280px-Star_Wars_Logo.svg.png" />
-                                <div class="img_caption">
-                                    <h6 class="title">Вукипедия для "эвоков". Освежите память</h6>
-                                </div>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#">
-                                <div class="img_wrap"></div>
-                                <img width="200" src="~/images/logo2.jpg"/>
-                                <div class="img_caption">
-                                    <h6 class="title">Fly Banana - банан среди овощей</h6>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <div class="img_wrap"></div>
-                                <img width="200" src="http://ps3hits.ru/wp-content/uploads/2017/11/header_phasma_social.jpg.img_.jpg" />
-                                <div class="img_caption">
-                                    <h6 class="title">Блог джедаев</h6>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                </section>
+    <article class="main_news_area">
+        <div class="inner2">
+            <section class="main_news">
+                <a href="#">
+                    <div class="img_wrap">
+                        <img width="600" src="~/images/LOGO.jpg" />
+                    </div>
+                    <div class="img_caption">
+                        <h3 class="title" style="word-wrap: break-word;">Soon...</h3>
+                        <p class="descrption" style="word-wrap: break-word;">
+                            Разработка инди-проекта, по вселенной звездных войн, от студии Fly Banana - будет продолжена через 3 месяца.
+                        </p>
+                    </div>
+                </a>
+            </section>
+            <div>
+                <h2 class="title1">Актуальное</h2title1>
             </div>
+            <section class="main_news">
+
+                <div class="img_wrap2">
+                    <div class="card" style="width: 5rem;">
+                        <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+                        <div class="card-body">
+
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="btn btn-primary">Читать далее</a>
+                        </div>
+
+                    </div>
+                    <div class="card" style="width: 5rem;">
+                        <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+                        <div class="card-body">
+
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="btn btn-primary">Читать далее</a>
+                        </div>
+                    </div>
+
+                    <div class="card" style="width: 5rem;">
+                        <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+                        <div class="card-body">
+
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="btn btn-primary">Читать далее</a>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 5rem;">
+                        <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+                        <div class="card-body">
+
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="btn btn-primary">Читать далее</a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="img_caption2" style="width: 25rem;">
+                    <div class="alert alert-success" role="alert">
+                        <h4 class="alert-heading">Йода одобряет</h4>
+                        <hr>
+                        <p>Не забываем следить за новостями, а так же подписывайтесь на наши паблики в соц сетях!</p>
+
+                    </div>
+
+
+                </div>
+            </section>
+            <h2 class="title1">Популярное</h2>
+            <section class="main_news">
+
+                <div class="img_wrap2">
+                    <div class="card" style="width: 5rem;">
+                        <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+                        <div class="card-body">
+
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="btn btn-primary">Читать далее</a>
+                        </div>
+
+                    </div>
+                    <div class="card" style="width: 5rem;">
+                        <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+                        <div class="card-body">
+
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="btn btn-primary">Читать далее</a>
+                        </div>
+                    </div>
+
+                    <div class="card" style="width: 5rem;">
+                        <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+                        <div class="card-body">
+
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="btn btn-primary">Читать далее</a>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 5rem;">
+                        <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+                        <div class="card-body">
+
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="btn btn-primary">Читать далее</a>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </section>
+
+        </div>
         </article>
-    </main>
 </body>
