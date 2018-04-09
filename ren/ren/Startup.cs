@@ -47,6 +47,7 @@ namespace ren
             }
 
             app.UseStaticFiles();
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {

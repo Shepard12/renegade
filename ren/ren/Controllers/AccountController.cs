@@ -6,6 +6,7 @@ using System.Security.Claims;
 using ren.Models.ViewModels; // пространство имен моделей RegisterModel и LoginModel
 using ren.Models; // пространство имен UserContext и класса User
 using Microsoft.AspNetCore.Authentication;
+    using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace ren.Controllers
@@ -17,12 +18,16 @@ namespace ren.Controllers
         {
             db = context;
         }
+
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult Login()
         {
             return View();
         }
+
         [HttpPost]
+        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginModel model)
         {
@@ -40,11 +45,13 @@ namespace ren.Controllers
             return View(model);
         }
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult Register()
         {
             return View();
         }
         [HttpPost]
+        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterModel model)
         {
@@ -59,7 +66,7 @@ namespace ren.Controllers
 
                     await Authenticate(model.Email); // аутентификация
 
-                    return RedirectToAction("Contact", "Home");
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                     ModelState.AddModelError("", "Некорректные логин и(или) пароль");
