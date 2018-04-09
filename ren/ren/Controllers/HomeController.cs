@@ -11,6 +11,7 @@ namespace ren.Controllers
 {
     public class HomeController : Controller
     {
+        [Authorize]
         public IActionResult Index()
         {
             ViewData["Message"] = "Home page.";
@@ -24,7 +25,7 @@ namespace ren.Controllers
 
             return View();
         }
-        [Authorize]
+      
         public IActionResult Contact()
         {
             return Content(User.Identity.Name);
