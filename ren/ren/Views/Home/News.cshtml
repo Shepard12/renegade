@@ -1,212 +1,224 @@
 ﻿<style>
-body { background: url("https://cdn-images-1.medium.com/max/1600/1*K9xJno8xofgnEB8Sw2OBEw.png") no-repeat;
-       background-size:2550px;
-}
-    .main_news > a {
-        display: table;
+    body {
         width: 100%;
-        table-layout: fixed;
+        height: 100%;
+        font-size: 22px;
+        font-family: 'Montserrat';
+        background-color: #ebebeb;
+    }
+
+    .container-fluid .left {
+        text-align: center;
+    }
+
+    .right {
+    }
+
+    img {
+        width: 50vw;
+    }
+
+    h1 {
+        font-size: 4vw;
+    }
+
+    h2 {
+        font-size: 3vw;
+    }
+
+    p {
+        font-size: 2vw;
+    }
+
+    .container-fluid a {
         text-decoration: none;
+        color: #808080;
     }
-
-    a, a:active, a:hover {
-        text-decoration: none;
-    }
-
-    a {
-        color: #555;
-        cursor: pointer;
-    }
-
-    .main_news .img_wrap {
-        overflow: hidden;
-        position: relative;
-        font-size: 14px;
-        display: table-cell;
-        width: 55.2%;
-        vertical-align: top;
-    }
-
-    .main_news .img_wrap2 {
-        overflow: hidden;
-        position: relative;
-        font-size: 14px;
-        display: table-cell;
-        vertical-align: top;
-    }
-
-    .main_news .img_wrap2 {
-        overflow: hidden;
-        position: relative;
-        font-size: 14px;
-        display: table-cell;
-        vertical-align: top;
-    }
-
 
     .card {
+        font-size: 2vw;
         display: table-cell;
         border: 2px solid black;
         background: #fff;
-
-        padding: 42px 50px;
         vertical-align: top;
+        text-align: center;
+        width:25vw;
     }
 
-   
-    article, main, section {
-        display: block;
-    }
 
-    .main_news_area {
-        padding: 80px 0 80px;
+    section.information .text .column p {
+        margin-top: 5%;
+        font-size: 1.2vw;
     }
-    .main_news .img_caption {
-        display: table-cell;
-        padding: 62px 20px;
-        vertical-align: top;
-        font-size:22px;
-        color:#808080;
+    section.information .text {
+        flex-direction: column;
+    }
+    section.information .text .column {
+        display: inline-flex;
 
-    }
-    .main_news .img_caption2 {
-        display: table-cell;
-        vertical-align: top;
-    
-    }
-    .main_news .img_caption2 {
-        display: table-cell;
-        vertical-align: top;
-        padding: 0px 10px;
-    }
 
-    .main_news {
-        display: table;
-        width: 100%;
-        margin-bottom: 18px;
-    }
-
-    div, section {
-        display: block;
-    }
-    .title1 {
-        color:#ffffff;
+        flex-flow: column nowrap;
+        width: 45.5%;
+        height: auto;
     }
 </style>
-<body>
-    <article class="main_news_area">
-        <div class="inner2">
-            <section class="main_news">
-                <a href="#">
-                    <div class="img_wrap">
-                        <img width="600" src="~/images/LOGO.jpg" />
-                    </div>
-                    <div class="img_caption">
-                        <h3 class="title" style="word-wrap: break-word;">Soon...</h3>
-                        <p class="descrption" style="word-wrap: break-word;">
-                            Разработка инди-проекта, по вселенной звездных войн, от студии Fly Banana - будет продолжена через 3 месяца.
-                        </p>
-                    </div>
-                </a>
-            </section>
-            <div>
-                <h2 class="title1">Актуальное</h2title1>
+<div class="container-fluid">
+    <h1>Star News</h1>
+    <div class="row">
+        <a href="#">
+            <div class="col-xs-12 col-sm-9 col-md-9 cold-lg-9 left" style="background-color: red"><img src="~/images/LOGO.jpg" /></div>
+            <div class="col-xs-12 col-sm-3 col-md-3 cold-lg-9 right" style="background-color: green">
+                <h2>Soon...</h2>
+                <p> Разработка инди-проекта, по вселенной звездных войн, от студии Fly Banana - будет продолжена через 3 месяца.</p>
             </div>
-            <section class="main_news">
+        </a>
+    </div>
 
-                <div class="img_wrap2">
-                    <div class="card" style="width: 5rem;">
-                        <img class="card-img-top" src=".../100px180/" alt="Card image cap">
-                        <div class="card-body">
+</div>
+<div class="container-fluid">
+    <h1>Актуальное</h1>
+    <div class="row">
+        <div class="col-xs-6 col-sm-4 col-md-3 cold-lg-9" style="background-color: red">
+            <a href="#">
+                <div class="card" style="width: 25rem;">
+                    <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+                    <div class="card-body">
 
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Читать далее</a>
-                        </div>
+                        <p class="card-text">Текст для новостей</p>
 
                     </div>
-                    <div class="card" style="width: 5rem;">
-                        <img class="card-img-top" src=".../100px180/" alt="Card image cap">
-                        <div class="card-body">
-
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Читать далее</a>
-                        </div>
-                    </div>
-
-                    <div class="card" style="width: 5rem;">
-                        <img class="card-img-top" src=".../100px180/" alt="Card image cap">
-                        <div class="card-body">
-
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Читать далее</a>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 5rem;">
-                        <img class="card-img-top" src=".../100px180/" alt="Card image cap">
-                        <div class="card-body">
-
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Читать далее</a>
-                        </div>
-                    </div>
-
                 </div>
-
-                <div class="img_caption2" style="width: 25rem;">
-                    <div class="alert alert-success" role="alert">
-                        <h4 class="alert-heading">Йода одобряет</h4>
-                        <hr>
-                        <p>Не забываем следить за новостями, а так же подписывайтесь на наши паблики в соц сетях!</p>
-
-                    </div>
-
-
-                </div>
-            </section>
-            <h2 class="title1">Популярное</h2>
-            <section class="main_news">
-
-                <div class="img_wrap2">
-                    <div class="card" style="width: 5rem;">
-                        <img class="card-img-top" src=".../100px180/" alt="Card image cap">
-                        <div class="card-body">
-
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Читать далее</a>
-                        </div>
-
-                    </div>
-                    <div class="card" style="width: 5rem;">
-                        <img class="card-img-top" src=".../100px180/" alt="Card image cap">
-                        <div class="card-body">
-
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Читать далее</a>
-                        </div>
-                    </div>
-
-                    <div class="card" style="width: 5rem;">
-                        <img class="card-img-top" src=".../100px180/" alt="Card image cap">
-                        <div class="card-body">
-
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Читать далее</a>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 5rem;">
-                        <img class="card-img-top" src=".../100px180/" alt="Card image cap">
-                        <div class="card-body">
-
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Читать далее</a>
-                        </div>
-                    </div>
-
-                </div>
-
-
-            </section>
-
+            </a>
         </div>
-        </article>
-</body>
+        <div class="col-xs-6 col-sm-4 col-md-3 cold-lg-9" style="background-color: green">
+            <a href="#">
+                <div class="card" style="width: 25rem;">
+                    <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+                    <div class="card-body">
+
+                        <p class="card-text">Текст для новостей</p>
+
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-xs-6 col-sm-4 col-md-3 cold-lg-9" style="background-color: red">
+            <a href="#">
+                <div class="card" style="width: 25rem;">
+                    <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+                    <div class="card-body">
+
+                        <p class="card-text">Текст для новостей</p>
+
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-xs-6 col-sm-4 col-md-3 cold-lg-9" style="background-color: green">
+            <a href="#">
+                <div class="card" style="width: 25rem;">
+                    <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+                    <div class="card-body">
+
+                        <p class="card-text">Текст для новостей</p>
+
+                    </div>
+                </div>
+            </a>
+        </div>
+
+    </div>
+</div>
+<div class="container-fluid">
+    <h1>Популярное</h1>
+    <div class="row">
+        <div class="col-xs-6 col-sm-4 col-md-3 cold-lg-9" style="background-color: red">
+            <a href="#">
+                <div class="card" style="width: 25rem;">
+                    <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+                    <div class="card-body">
+
+                        <p class="card-text">Текст для новостей</p>
+
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-xs-6 col-sm-4 col-md-3 cold-lg-9" style="background-color: red">
+            <a href="#">
+                <div class="card" style="width: 25rem;">
+                    <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+                    <div class="card-body">
+
+                        <p class="card-text">Текст для новостей</p>
+
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-xs-6 col-sm-4 col-md-3 cold-lg-9" style="background-color: green">
+            <a href="#">
+                <div class="card" style="width: 25rem;">
+                    <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+                    <div class="card-body">
+
+                        <p class="card-text">Текст для новостей</p>
+
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-xs-6 col-sm-4 col-md-3 cold-lg-9" style="background-color: green">
+            <a href="#">
+                <div class="card" style="width: 25rem;">
+                    <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+                    <div class="card-body">
+
+                        <p class="card-text">Текст для новостей</p>
+
+                    </div>
+                </div>
+            </a>
+        </div>
+
+    </div>
+</div>
+
+<section class="information">
+    <h2>Приметка</h2>
+    <div class="text">
+        <div class="column">
+            <p>
+                Knights of the Old Republic — первая компьютерная ролевая игра, действие которой происходит в
+                авторском мире «Звёздных войн». Она основана на игровой системе d20 — разновидности D&D 3-й версии.
+                Бои проходят в реальном времени, но их можно в любой момент приостановить. Главный герой балансирует
+                между добром и злом, и от каждого его поступка зависит его принадлежность к Светлой, либо Тёмной
+                сторонам Силы, а в конечном счёте и концовка игры.
+            </p>
+            <p>
+                Knights of the Old Republic — первая компьютерная ролевая игра, действие которой происходит в
+                авторском мире «Звёздных войн». Она основана на игровой системе d20 — разновидности D&D 3-й версии.
+                Бои проходят в реальном времени, но их можно в любой момент приостановить. Главный герой балансирует
+                между добром и злом, и от каждого его поступка зависит его принадлежность к Светлой, либо Тёмной
+                сторонам Силы, а в конечном счёте и концовка игры.
+            </p>
+        </div>
+        <div class="column">
+            <p>
+                Knights of the Old Republic — первая компьютерная ролевая игра, действие которой происходит в
+                авторском мире «Звёздных войн». Она основана на игровой системе d20 — разновидности D&D 3-й версии.
+                Бои проходят в реальном времени, но их можно в любой момент приостановить. Главный герой балансирует
+                между добром и злом, и от каждого его поступка зависит его принадлежность к Светлой, либо Тёмной
+                сторонам Силы, а в конечном счёте и концовка игры.
+            </p>
+            <p>
+                Knights of the Old Republic — первая компьютерная ролевая игра, действие которой происходит в
+                авторском мире «Звёздных войн». Она основана на игровой системе d20 — разновидности D&D 3-й версии.
+                Бои проходят в реальном времени, но их можно в любой момент приостановить. Главный герой балансирует
+                между добром и злом, и от каждого его поступка зависит его принадлежность к Светлой, либо Тёмной
+                сторонам Силы, а в конечном счёте и концовка игры.
+            </p>
+        </div>
+    </div>
+</section>
