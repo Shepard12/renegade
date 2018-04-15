@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ren.Models;
 using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace ren.Controllers
 {
@@ -25,10 +26,12 @@ namespace ren.Controllers
 
             return View();
         }
-      
+
+        [Authorize(Roles = "admin")]
         public IActionResult Contact()
         {
-            return Content(User.Identity.Name);
+            string role = User.FindFirst(x => x.Type == ClaimsIdentity.DefaultRoleClaimType).Value;
+            return Content($"ваша роль: {role}");
         }
 
         public IActionResult News()
