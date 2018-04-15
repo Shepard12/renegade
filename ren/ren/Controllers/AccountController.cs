@@ -116,8 +116,8 @@ namespace RolesApp.Controllers
 
         public async Task<IActionResult> Logout()
         {
-            await HttpContext.Authentication.SignOutAsync("Cookies");
+            await HttpContext.SignOutAsync("Cookies");
             return RedirectToAction("Login", "Account");
-        }
+        }   
     }
 }

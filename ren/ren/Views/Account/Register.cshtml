@@ -1,4 +1,4 @@
-﻿@model ren.Models.ViewModels.RegisterModel
+﻿@model  ren.Models.ViewModels.RegisterModel
 
 <h2>Регистрация</h2>
 
@@ -8,17 +8,17 @@
         <div>
             <label asp-for="Email">Введите Email</label><br />
             <input type="text" asp-for="Email" />
-            <span asp-validation-for="Email" />
+            <span asp-validation-for="Email" style="color:darkred"  ></span>
         </div>
         <div>
             <label asp-for="Password">Введите пароль</label><br />
             <input asp-for="Password" />
-            <span asp-validation-for="Password" />
+            <span asp-validation-for="Password" style="color:darkred"></span>
         </div>
         <div>
             <label asp-for="ConfirmPassword">Повторите пароль</label><br />
             <input asp-for="ConfirmPassword" />
-            <span asp-validation-for="ConfirmPassword" />
+            <span asp-validation-for="ConfirmPassword" style="color:darkred"></span>
         </div>
         <div>
             <input type="submit" value="Регистрация" />
