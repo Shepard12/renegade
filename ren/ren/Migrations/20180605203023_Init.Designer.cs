@@ -11,8 +11,8 @@ using System;
 namespace ren.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20180415141508_Initial")]
-    partial class Initial
+    [Migration("20180605203023_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
