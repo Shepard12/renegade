@@ -41,6 +41,21 @@
                 <li class="nav-item">
                     <a asp-area="" asp-controller="Home" asp-action="News" class="nav-link">News</a>
                 </li>
+                <li class="nav-item">
+                    <a asp-area="" asp-controller="Articles" asp-action="Index" class="nav-link">News list</a>
+                </li>
+                <li class="nav-item">
+                    <a asp-area="" asp-controller="Articles" asp-action="Create" class="nav-link">Create</a>
+                </li>
+                <li class="nav-item">
+                    <a asp-area="" asp-controller="Articles" asp-action="Details" class="nav-link">Details</a>
+                </li>
+                <li class="nav-item">
+                    <a asp-area="" asp-controller="Articles" asp-action="Edit" class="nav-link">Edit</a>
+                </li>
+                <li class="nav-item">
+                    <a asp-area="" asp-controller="Articles" asp-action="Delete" class="nav-link">Delete</a>
+                </li>
             </ul>
             @if (User.IsInRole("admin") || User.IsInRole("user"))
             {

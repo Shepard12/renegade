@@ -25,6 +25,7 @@ namespace ren
                 .AddCookie(options =>
                 {
                     options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
+                    options.AccessDeniedPath = new Microsoft.AspNetCore.Http.PathString("/Home/Index");
                 });
 
             services.AddMvc();
@@ -33,10 +34,17 @@ namespace ren
         public void Configure(IApplicationBuilder app)
         {
             app.UseDeveloperExceptionPage();
-
             app.UseStaticFiles();
-
             app.UseAuthentication();
+            app.Use(async (context, next) =>
+            {
+                await next();
+                if (context.Response.StatusCode == 404)
+                {
+                    context.Request.Path = "/Home/PageNotFound";
+                    await next();
+                }
+            });
 
             app.UseMvc(routes =>
             {
