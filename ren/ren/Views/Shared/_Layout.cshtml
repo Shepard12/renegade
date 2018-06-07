@@ -44,26 +44,27 @@
                 <li class="nav-item">
                     <a asp-area="" asp-controller="Articles" asp-action="Index" class="nav-link">News list</a>
                 </li>
-                <li class="nav-item">
-                    <a asp-area="" asp-controller="Articles" asp-action="Create" class="nav-link">Create</a>
-                </li>
-                <li class="nav-item">
-                    <a asp-area="" asp-controller="Articles" asp-action="Details" class="nav-link">Details</a>
-                </li>
-                <li class="nav-item">
-                    <a asp-area="" asp-controller="Articles" asp-action="Edit" class="nav-link">Edit</a>
-                </li>
-                <li class="nav-item">
-                    <a asp-area="" asp-controller="Articles" asp-action="Delete" class="nav-link">Delete</a>
-                </li>
+                @if (User.IsInRole("admin"))
+                {
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Admin panel
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a asp-area="" asp-controller="Articles" asp-action="Create" class="dropdown-item">Create</a>
+                            <a asp-area="" asp-controller="" asp-action="" class="dropdown-item">Suggestions</a>
+                        </div>
+                    </li>
+                }
             </ul>
+
             @if (User.IsInRole("admin") || User.IsInRole("user"))
             {
-            <ul class="nav navbar-nav">
-                <li><span class="navbar-text">@User.Identity.Name</span></li>
-                <li><span>&#160&#160</span></li>
-                <li><a class="btn btn-danger" asp-area="" asp-controller="Account" asp-action="Logout">Выйти</a></li>
-            </ul>
+                <ul class="nav navbar-nav">
+                    <li><span class="navbar-text">@User.Identity.Name</span></li>
+                    <li><span>&#160&#160</span></li>
+                    <li><a class="btn btn-danger" asp-area="" asp-controller="Account" asp-action="Logout">Выйти</a></li>
+                </ul>
             }
         </div>
     </nav>
