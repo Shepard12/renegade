@@ -1,4 +1,7 @@
-﻿@model  ren.Models.ViewModels.RegisterModel
+﻿@model ren.Models.ViewModels.RegisterModel
+@{
+    Layout = "_AccountLayout";
+}
 
 <h2>Регистрация</h2>
 
@@ -8,7 +11,7 @@
         <div>
             <label asp-for="Email">Введите Email</label><br />
             <input type="text" asp-for="Email" />
-            <span asp-validation-for="Email" style="color:darkred"  ></span>
+            <span asp-validation-for="Email" style="color:darkred"></span>
         </div>
         <div>
             <label asp-for="Password">Введите пароль</label><br />
