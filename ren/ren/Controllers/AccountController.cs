@@ -8,6 +8,7 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using System.Linq;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using System.ComponentModel.DataAnnotations;
 
 namespace RolesApp.Controllers
 {
@@ -17,7 +18,7 @@ namespace RolesApp.Controllers
         public AccountController(ApplicationContext context)
         {
             _context = context;
-            DatabaseInitialize(); // добавляем пользователя и роли в бд
+            DatabaseInitialize(); 
         }
 
         private void DatabaseInitialize()
@@ -29,15 +30,13 @@ namespace RolesApp.Controllers
 
                 string adminEmail = "admin";
                 string adminPassword = "password";
-
-                // добавляем роли
+               
                 Role adminRole = new Role { Name = adminRoleName };
                 Role userRole = new Role { Name = userRoleName };
 
                 _context.Roles.Add(userRole);
                 _context.Roles.Add(adminRole);
 
-                // добавляем администратора
                 _context.Users.Add(new User { Email = adminEmail, Password = adminPassword, Role = adminRole });
 
                 _context.SaveChanges();
@@ -52,12 +51,18 @@ namespace RolesApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterModel model)
         {
+            var email = new EmailAddressAttribute();
+
+            if(!email.IsValid(model.Email))
+            {
+                ModelState.AddModelError("Email", "Incorrect Email");
+            }
+
             if (ModelState.IsValid)
             {
                 User user = await _context.Users.FirstOrDefaultAsync(u => u.Email == model.Email);
                 if (user == null)
                 {
-                    // добавляем пользователя в бд
                     user = new User { Email = model.Email, Password = model.Password };
                     Role userRole = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "user");
                     if (userRole != null)
@@ -66,12 +71,12 @@ namespace RolesApp.Controllers
                     _context.Users.Add(user);
                     await _context.SaveChangesAsync();
 
-                    await Authenticate(user); // аутентификация
+                    await Authenticate(user);
 
                     return RedirectToAction("Index", "Home");
                 }
                 else
-                    ModelState.AddModelError("", "Некорректные логин и(или) пароль");
+                    ModelState.AddModelError("", "Incorrect login/password");
             }
             return View(model);
         }
@@ -91,11 +96,11 @@ namespace RolesApp.Controllers
                     .FirstOrDefaultAsync(u => u.Email == model.Email && u.Password == model.Password);
                 if (user != null)
                 {
-                    await Authenticate(user); // аутентификация
+                    await Authenticate(user);
 
                     return RedirectToAction("Index", "Home");
                 }
-                ModelState.AddModelError("", "Некорректные логин и(или) пароль");
+                ModelState.AddModelError("", "Incorrect login/password");
             }
             return View(model);
         }

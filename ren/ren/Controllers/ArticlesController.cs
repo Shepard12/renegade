@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ren.Models;
+using ren.Models.ViewModels;
 
 namespace ren.Controllers
 {
@@ -50,8 +51,14 @@ namespace ren.Controllers
         [Authorize(Roles = "admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Description,Text,Image")] Article article)
+        public async Task<IActionResult> Create([Bind("Id,Title,Description,Text,Image")] ArticleModel editArticle)
         {
+            Article article = new Article();
+            article.Id = editArticle.Id;
+            article.Description = editArticle.Description;
+            article.Title = editArticle.Title;
+            article.Text = editArticle.Text;
+
             if (ModelState.IsValid)
             {
                 _context.Add(article);
@@ -80,8 +87,13 @@ namespace ren.Controllers
         [Authorize(Roles = "admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description,Text,Image")] Article article)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description,Text,Image")] ArticleModel editArticle)
         {
+            Article article = new Article();
+            article.Id = editArticle.Id;
+            article.Description = editArticle.Description;
+            article.Title = editArticle.Title;
+            article.Text = editArticle.Text;
             if (id != article.Id)
             {
                 return NotFound();

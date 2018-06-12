@@ -8,8 +8,11 @@
         <h1 class="display-4">@Html.DisplayFor(model => model.Title)</h1>
         <p>@Html.Raw(Model.Text)</p>
         <div>
-            <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-            <a asp-action="Index">Back to List</a>
+            @if (User.IsInRole("admin"))
+            {
+                <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+            }
+        <a asp-action="Index">Back to List</a>
         </div>
     </div>
 </div>

@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewData["Title"] = "EmailSender";
+}
+<div class="jumbotron">
+    <h1 class="display-4">Email distribution</h1>
+    <p class="lead">We will we very thankful if you will allow us to send you last news about Renegade project via email.</p>
+    <hr class="my-4">
+    <p>By clicking button below you agree that our service will be allowed to send you an email at any time. Pleace notice that service will send mails to adress you using for login</p>
+    <form asp-action="EmailSender">
+        <input type="submit" value="Subscribe" class="btn btn-success" />
+    </form>
+</div>
+

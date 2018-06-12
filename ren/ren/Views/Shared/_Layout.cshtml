@@ -25,7 +25,7 @@
     <div class="header-nightsky">
         <nav class="navbar navbar-default navbar-expand-md">
             <div class="container">
-                <a class="navbar-brand" href="#">Fly-banana</a>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Fly-Banana</a>
                 <div class="navbar-header">
                     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -44,27 +44,39 @@
                         <li class="nav-item">
                             <a asp-area="" asp-controller="Articles" asp-action="Index" class="nav-link">News list</a>
                         </li>
+                        @if (User.IsInRole("user"))
+        {
+                <li class="nav-item">
+                    <a asp-area="" asp-controller="Home" asp-action="EmailSender" class="nav-link">Email distribution</a>
+                </li>
+}
                         @if (User.IsInRole("admin"))
-                    {
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                               style="color: white">
-                                Admin panel
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a asp-area="" asp-controller="Articles" asp-action="Create" class="dropdown-item">Create</a>
-                                <a asp-area="" asp-controller="" asp-action="" class="dropdown-item">Suggestions</a>
-                            </div>
-                        </li>
-                }
+        {
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                       style="color: white">
+                        Admin panel
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a asp-area="" asp-controller="Articles" asp-action="Create" class="dropdown-item">Create</a>
+                        <a asp-area="" asp-controller="" asp-action="" class="dropdown-item">Suggestions</a>
+                    </div>
+                </li>
+}
                     </ul>
                     @if (User.IsInRole("admin") || User.IsInRole("user"))
-                {
-                    <ul class="nav navbar-nav">
-                        <li><span class="navbar-text" style="color: white">@User.Identity.Name</span></li>
-                        <li><a class="btn btn-danger" asp-area="" asp-controller="Account" asp-action="Logout">Выйти</a></li>
-                    </ul>
-            }
+    {
+                <ul class="nav navbar-nav">
+                    <li><span class="navbar-text" style="color: white">@User.Identity.Name</span></li>
+                    <li><a class="btn btn-danger" asp-area="" asp-controller="Account" asp-action="Logout">Log Out</a></li>
+                </ul>
+}
+                    @if (!User.IsInRole("admin") && !User.IsInRole("user"))
+    {
+                <ul class="nav navbar-nav">
+                    <li><a class="btn btn-success" asp-area="" asp-controller="Account" asp-action="Login">Log In</a></li>
+                </ul>
+}
                 </div>
             </div>
         </nav>
@@ -83,7 +95,7 @@
                                 <address>
                                     <ul class="list-unstyled">
                                         <li>
-                                            Fly banana studios<br>
+                                            Fly-Banana studios<br>
                                             Zhytomyr<br>
                                             Ukraine<br>
                                             fly-banana@gmail.com<br>
@@ -136,7 +148,7 @@
                     <div class="row">
                         <div class="col-xs-12">
                             <!--Footer Bottom-->
-                            <p class="text-xs-center">&copy; Copyright 2018 - Zhytomyr. All rights reserved. Fly banana studios and this site created by Illia Knoznoferov</p>
+                            <p class="text-xs-center">&copy; Copyright 2018 - Zhytomyr. All rights reserved. Fly-Banana studios and this site created by Illia Knoznoferov</p>
                         </div>
                     </div>
                 </div>

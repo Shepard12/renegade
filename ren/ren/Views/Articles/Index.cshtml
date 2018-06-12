@@ -4,19 +4,19 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Recent news</h2>
+<h2 style="color:white;">Recent news</h2>
 <div class="card-deck">
-    @foreach (var item in Model)
+    @foreach (var item in Model.Reverse())
     {
-            <div class="card" style="width: 100%; min-width: 225px; max-width: 345px;">
+            <div class="card" style="width: 100%; min-width: 300px; max-width: 540px; margin-bottom: 30px;">
                 <div class="card-body">
                     <h5 class="card-title">@Html.DisplayFor(modelItem => item.Title)</h5>
                     <p class="card-text">@Html.DisplayFor(modelItem => item.Description)</p>
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a>
                     @if (User.IsInRole("admin"))
                     {
-                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-                     <a asp-action="Details" asp-route-id="@item.Id">Details</a>
-                     <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                     }
                 </div>
             </div>

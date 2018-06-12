@@ -8,6 +8,8 @@ namespace ren.Models.ViewModels
 {
     public class ArticleModel
     {
+        public int Id { get; set; }
+
         [Required]
         [StringLength(40, ErrorMessage = "Title Max Length is 40")]
         public string Title { get; set; }
