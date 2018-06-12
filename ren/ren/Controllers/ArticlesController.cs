@@ -51,10 +51,9 @@ namespace ren.Controllers
         [Authorize(Roles = "admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Description,Text,Image")] ArticleModel editArticle)
+        public async Task<IActionResult> Create([Bind("Title,Description,Text")] ArticleModel editArticle)
         {
             Article article = new Article();
-            article.Id = editArticle.Id;
             article.Description = editArticle.Description;
             article.Title = editArticle.Title;
             article.Text = editArticle.Text;
@@ -87,7 +86,7 @@ namespace ren.Controllers
         [Authorize(Roles = "admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description,Text,Image")] ArticleModel editArticle)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description,Text")] ArticleModel editArticle)
         {
             Article article = new Article();
             article.Id = editArticle.Id;
