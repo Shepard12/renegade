@@ -1,7 +1,159 @@
 ﻿@{
     ViewData["Title"] = "About";
 }
-<h2>@ViewData["Title"]</h2>
-<h3>@ViewData["Message"]</h3>
+<style>
+* {box-sizing: border-box;}
+.mySlides {display: none;}
+img {vertical-align: middle;}
 
-<p>Use this area to provide additional information.</p>
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 5s;
+  animation-name: fade;
+  animation-duration: 5s;
+}
+
+@@-webkit-keyframes fade {
+  from {opacity: .5}
+  to {opacity: 1}
+}
+
+@@keyframes fade {
+  from {opacity: .5}
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+</style>
+<div class="jumbotron">
+    <div class="container">
+        <h1 class="display-4">About Star Wars: Renegade</h1>
+        <p class="lead">Renegade is project being developed by huge Star Wars fans who founded Fly-Banana studios</p>
+        <p>We had first ideas of making Star Wars universe game in authumn 2017 and started to think about this seriously in December 2017.</p>
+        <p>Just few days after new 2018 year we founded our game development studio jokingly named Fly-Banana. Right after that we began to think about game genre, main idea and concept.</p>
+        <p>In a short time we decided our game genre to be 3D action with thriller, RPG and horror elements.</p>
+        <p>But defining game's main idea and concept wansn't so easy...</p>
+        <p>
+            After a lots of discussions we finnaly pointed main game ideas:
+            <ul class="list-group">
+                <li class="list-group-item">Game story will occur after all "Old Republic" events and before the prequels story</li>
+                <li class="list-group-item">Game main protagonist will be mercenary(so we gonna play for villain?)</li>
+                <li class="list-group-item">There will be no famous jedi or sith in game</li>
+                <li class="list-group-item">Game experience will first of all depend on player's feelings so the main game aspects are: cinematography(cut-scenes), music and story</li>
+            </ul>
+        </p>
+        <p>
+            For our project we take a lot inspiration from other games(as Star Wars: Knights of the Old Republic and Mass Effect trilogy),
+            films(Star Wars Original trilogy, Prequel trilogy and Stories), books(Star Wars non-canon books by Drew Karpyshyn) and music.
+        </p>
+        <p>
+            We done pre-alpha demo version in Febuary 2018. Here are some game screenshots:
+        </p>
+        <div class="slideshow-container">
+
+            <div class="mySlides fade">
+                <div class="numbertext">1 / 5</div>
+                <img src="~/images/1.png" style="width:100%">
+            </div>
+
+            <div class="mySlides fade">
+                <div class="numbertext">2 / 5</div>
+                <img src="~/images/2.png" style="width:100%">
+            </div>
+
+            <div class="mySlides fade">
+                <div class="numbertext">3 / 5</div>
+                <img src="~/images/3.png" style="width:100%">
+            </div>
+
+            <div class="mySlides fade">
+                <div class="numbertext">4 / 5</div>
+                <img src="~/images/4.png" style="width:100%">
+            </div>
+
+            <div class="mySlides fade">
+                <div class="numbertext">5 / 5</div>
+                <img src="~/images/5.png" style="width:100%">
+            </div>
+
+        </div>
+        <br>
+
+        <div style="text-align:center">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+        <p>Now project in development. Beta version is planning to be done in 2019, Project estimated to be released in 2022.</p>
+    </div>
+</div>
+
+<script>
+var slideIndex = 0;
+showSlides();
+
+function showSlides() {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    var dots = document.getElementsByClassName("dot");
+    for (i = 0; i < slides.length; i++) {
+       slides[i].style.display = "none";
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {slideIndex = 1}
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";
+    dots[slideIndex-1].className += " active";
+    setTimeout(showSlides, 5000);
+}
+</script>

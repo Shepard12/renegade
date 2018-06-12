@@ -10,10 +10,12 @@ namespace ren.Models.ViewModels
     {
         [Required(ErrorMessage = "Не указан Email")]
         [DataType(DataType.EmailAddress)]
+        [StringLength(40, ErrorMessage = "Email Max Length is 40")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Не указан пароль")]
         [DataType(DataType.Password)]
+        [StringLength(50, ErrorMessage = "Password Max Length is 50")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]

@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authentication;
 using System.Linq;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Authorization;
 
 namespace RolesApp.Controllers
 {
@@ -45,7 +46,10 @@ namespace RolesApp.Controllers
         [HttpGet]
         public IActionResult Register()
         {
-            return View();
+            if (User.IsInRole("admin") || User.IsInRole("user"))
+                return RedirectToAction("Index", "Home");
+            else
+                return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -83,7 +87,10 @@ namespace RolesApp.Controllers
         [HttpGet]
         public IActionResult Login()
         {
-            return View();
+            if (User.IsInRole("admin") || User.IsInRole("user"))
+                return RedirectToAction("Index", "Home");
+            else
+                return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
