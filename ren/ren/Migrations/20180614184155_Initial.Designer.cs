@@ -11,7 +11,7 @@ using System;
 namespace ren.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20180614134322_Initial")]
+    [Migration("20180614184155_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,6 +20,23 @@ namespace ren.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.0.2-rtm-10011")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("ren.Models.Comment", b =>
+            {
+                b.Property<int>("CommentID")
+                    .ValueGeneratedOnAdd();
+
+                b.Property<int>("ArticleID");
+
+                b.Property<string>("Body")
+                    .HasColumnType("ntext");
+
+                b.Property<string>("Name");
+
+                b.HasKey("CommentID");
+
+                b.ToTable("Comment");
+            });
 
             modelBuilder.Entity("ren.Models.Article", b =>
                 {
@@ -38,6 +55,7 @@ namespace ren.Migrations
 
                     b.ToTable("Article");
                 });
+
 
             modelBuilder.Entity("ren.Models.Role", b =>
                 {

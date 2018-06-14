@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ren.Models.Photos>
+@{ ViewBag.Title = "Gallery"; }
+<link href="~/css/photos.css" rel="stylesheet" />
+<script src="~/js/_photos.js"></script>
+<div class="jumbotron col-12">
+    <h1 class="display-4">Star Wars: Renegade - Gallery</h1>
+    <ul class="list-group-horizontal">
+        <li class="list-group-item">@Html.ActionLink("Logos", "Photos", "Home", new { id = 2 }, null)</li>
+        <li class="list-group-item">@Html.ActionLink("Arts", "Photos", "Home", new { id = 1 }, null)</li>
+        <li class="list-group-item">@Html.ActionLink("Default", "Photos", "Home", new { id = 0 }, null)</li>
+    </ul>
+    <div class="col-12">
+        @foreach (var image in Model)
+        {
+            <img alt="@image.Description" src="/@image.Path" class="img-thumbnail" style="width:200px; height: 200px; object-fit: cover;" onclick="display(this);" />
+        }
+    </div>
+    <div id="divimage" class="modal">
+        <img class="modal-content" id="modalimg">
+        <div id="caption"></div>
+    </div>
+</div>
+<style>
+    .list-group-horizontal .list-group-item {
+        display: inline-block;
+    }
+
+    .list-group-horizontal .list-group-item {
+        margin-bottom: 0;
+        margin-left: -4px;
+        margin-right: 0;
+        border-right-width: 0;
+    }
+
+        .list-group-horizontal .list-group-item:first-child {
+            border-top-right-radius: 0;
+            border-bottom-left-radius: 4px;
+        }
+
+        .list-group-horizontal .list-group-item:last-child {
+            border-top-right-radius: 4px;
+            border-bottom-left-radius: 0;
+            border-right-width: 1px;
+        }
+</style>

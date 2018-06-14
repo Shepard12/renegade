@@ -9,13 +9,14 @@ namespace ren.Models
 {
     public class ApplicationContext : DbContext
     {
-        public DbSet<User> Users { get; set; }
-        public DbSet<Role> Roles { get; set; }
         public ApplicationContext(DbContextOptions<ApplicationContext> options)
         : base(options)
         {
         }
-        public DbSet<ren.Models.Article> Article { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Role> Roles { get; set; }
+        public DbSet<Article> Article { get; set; }
+        public DbSet<Comment> Comment { get; set; }
     }
 
 }

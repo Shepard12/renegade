@@ -20,6 +20,23 @@ namespace ren.Migrations
                 .HasAnnotation("ProductVersion", "2.0.2-rtm-10011")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("ren.Models.Comment", b =>
+            {
+                b.Property<int>("CommentID")
+                    .ValueGeneratedOnAdd();
+
+                b.Property<int>("ArticleID");
+
+                b.Property<string>("Body")
+                    .HasColumnType("ntext");
+
+                b.Property<string>("Name");
+
+                b.HasKey("CommentID");
+
+                b.ToTable("Comment");
+            });
+
             modelBuilder.Entity("ren.Models.Article", b =>
                 {
                     b.Property<int>("Id")

@@ -5,18 +5,23 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ren.Models;
+using ren.Code;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
 using System.Net.Mail;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Hosting;
 
 namespace ren.Controllers
 {
+
     public class HomeController : Controller
     {
+        private IHostingEnvironment _hostingEnvironment;
         private ApplicationContext _context;
-        public HomeController(ApplicationContext context)
+        public HomeController(ApplicationContext context, IHostingEnvironment environment)
         {
+            _hostingEnvironment = environment;
             _context = context;
         }
 
@@ -103,6 +108,27 @@ namespace ren.Controllers
         public IActionResult TryGame()
         {
             return View();
+        }
+
+        public ActionResult Photos(int id)
+        {
+            // Default.
+            string folder = "Photos/";
+
+            switch (id)
+            {
+                case 0:
+                    folder = "Photos/";
+                    break;
+                case 1:
+                    folder = "Photos/Arts/";
+                    break;
+                case 2:
+                    folder = "Photos/Logos/";
+                    break;
+            }
+
+            return View(new PhotoModel(folder, _hostingEnvironment));
         }
 
     }

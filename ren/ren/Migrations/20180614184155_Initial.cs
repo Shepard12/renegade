@@ -10,6 +10,21 @@ namespace ren.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Comment",
+                columns: table => new
+                {
+                    CommentID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    ArticleID = table.Column<int>(nullable: false),
+                    Body = table.Column<string>(type: "ntext", nullable: true),
+                    Name = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Comment", x => x.CommentID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Article",
                 columns: table => new
                 {
@@ -24,6 +39,7 @@ namespace ren.Migrations
                 {
                     table.PrimaryKey("PK_Article", x => x.Id);
                 });
+
 
             migrationBuilder.CreateTable(
                 name: "Roles",
@@ -70,6 +86,9 @@ namespace ren.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Article");
+
+            migrationBuilder.DropTable(
+                name: "Comment");
 
             migrationBuilder.DropTable(
                 name: "Users");
