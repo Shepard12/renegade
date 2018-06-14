@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewData["Title"] = "TryGame";
+}
+<div class="jumbotron">
+    <h2 align="center">Star Wars: Renegade Demo</h2>
+    <hr />
+    <div align="center" class="GameContainer">
+        <iframe src="https://c.simmer.io/static/unityFrame/index.html?url=https%3A%2F%2Fsimmercdn.com%2Funity%2FaJaEPDevcVRJ1qTv74kWNjUjrb03%2Fcontent%2F5ee22e58-58e5-5d50-89f2-aab2ec29049d&imagePath=screens/0.png" style="width:864px;height:540px;border:0"></iframe>
+    </div>
+    <div align="center" class="ErrorContainer">
+        Game demo can only run on a devices with screen width > 1000 pixels
+    </div>
+</div>
+
+    <style>
+        .ErrorContainer {
+            display: none;
+        }
+        @@media only screen and (max-width: 1000px) {
+            .GameContainer {
+                display: none;
+            }
+            .ErrorContainer{
+                display: block;
+            }
+        }
+
+    </style>

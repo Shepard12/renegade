@@ -83,6 +83,11 @@ namespace ren.Controllers
                 return RedirectToAction("Index");
             }
         }
-      
+
+        public IActionResult TryGame()
+        {
+            return View();
         }
+
+    }
 }

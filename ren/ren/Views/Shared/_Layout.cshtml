@@ -44,23 +44,26 @@
                         <li class="nav-item">
                             <a asp-area="" asp-controller="Articles" asp-action="Index" class="nav-link">News list</a>
                         </li>
+                        <li class="nav-item">
+                            <a asp-area="" asp-controller="Home" asp-action="TryGame" class="nav-link">Game demo</a>
+                        </li>
                         @if (User.IsInRole("user"))
-        {
-                <li class="nav-item">
-                    <a asp-area="" asp-controller="Home" asp-action="EmailSender" class="nav-link">Email distribution</a>
-                </li>
+    {
+                    <li class="nav-item">
+                        <a asp-area="" asp-controller="Home" asp-action="EmailSender" class="nav-link">Email distribution</a>
+                    </li>
 }
                         @if (User.IsInRole("admin"))
-        {
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                       style="color: white">
-                        Admin panel
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a asp-area="" asp-controller="Articles" asp-action="Create" class="dropdown-item">Create</a>
-                    </div>
-                </li>
+    {
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                           style="color: white">
+                            Admin panel
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a asp-area="" asp-controller="Articles" asp-action="Create" class="dropdown-item">Create</a>
+                        </div>
+                    </li>
 }
                     </ul>
                     @if (User.IsInRole("admin") || User.IsInRole("user"))
