@@ -10,6 +10,8 @@ using System.Linq;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Authorization;
+using System;
+using System.Net.Mail;
 
 namespace RolesApp.Controllers
 {
@@ -130,6 +132,71 @@ namespace RolesApp.Controllers
         {
             await HttpContext.SignOutAsync("Cookies");
             return RedirectToAction("Login", "Account");
-        }   
+        }
+
+        [HttpGet]
+        public IActionResult Forgot()
+        {
+            if (User.IsInRole("admin") || User.IsInRole("user"))
+                return RedirectToAction("Index", "Home");
+            else
+                return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Forgot(ForgotModel model)
+        {
+            string email = model.Email.ToString();
+            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            var stringChars = new char[8];
+            var random = new Random();
+
+            for (int i = 0; i < stringChars.Length; i++)
+            {
+                stringChars[i] = chars[random.Next(chars.Length)];
+            }
+
+            var finalString = new String(stringChars);
+
+            //Work with user
+
+            User user = await _context.Users
+                    .Include(u => u.Role)
+                    .FirstOrDefaultAsync(u => u.Email == email);
+            if (user != null)
+            {
+                user.Password = finalString;
+                _context.Update(user);
+                await _context.SaveChangesAsync();
+
+                try
+                {
+                    SmtpClient smtpClient = new SmtpClient("mail7.meuhost.net", 25);
+                    smtpClient.Credentials = new System.Net.NetworkCredential("info@goodstream.eu", "Info4!891");
+                    smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+                    smtpClient.EnableSsl = true;
+                    MailMessage mail = new MailMessage();
+                    mail.From = new MailAddress("info@goodstream.eu");
+                    mail.To.Add(new MailAddress(email));
+                    mail.Subject = "Star Wars: Renegade - новая новость";
+                    mail.Body = "Вы забыли пароль? Ваш новый: " + finalString + " Поменять пароль всегда можно в личном кабинете.";
+                    try
+                    {
+                        await Task.Run(() =>
+                        {
+                            smtpClient.Send(mail);
+                        });
+                    }
+                    catch (Exception ex)
+                    {
+                    }
+                    return RedirectToAction("Login");
+                }catch (Exception ex)
+                {
+                }
+            }
+            return RedirectToAction("Login");
+
+        }
     }
 }

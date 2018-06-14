@@ -109,8 +109,6 @@ namespace ren.Controllers
                 {
                     return RedirectToAction("Index");
                 }
-
-                return RedirectToAction(nameof(Index));
             }
             return View(article);
         }

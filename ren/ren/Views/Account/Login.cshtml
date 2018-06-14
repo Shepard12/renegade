@@ -18,7 +18,9 @@
             <span asp-validation-for="Password" style="color:darkred"></span>
         </div>
         <div class="form-group col-md-12">
-            <input type="submit" value="Sign in" class="btn btn-success" /><a asp-action="Register" asp-controller="Account" class="btn btn-info" style="color: white; outline: 0; margin-left: 5px;">Register</a>
+            <input type="submit" value="Sign in" class="btn btn-success" />
+            <a asp-action="Register" asp-controller="Account" class="btn btn-info" style="color: white; outline: 0; margin-left: 5px;">Register</a>
+            <a asp-action="Forgot" asp-controller="Account" class="btn btn-danger" style="color: white; outline: 0; margin-left: 5px;">Forgot pass</a>
         </div>
     </div>
 </form>

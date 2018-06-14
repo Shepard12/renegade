@@ -1,0 +1,20 @@
+﻿@model ren.Models.ViewModels.ForgotModel;
+@{
+    ViewData["Title"] = "Forgot";
+}
+
+<h2>Forgot your password?</h2>
+<h6>Type your login email and we will send you a new one</h6>
+<form asp-action="Forgot" asp-controller="Account">
+    <div class="validation" asp-validation-summary="ModelOnly"></div>
+    <div class="form-group col-md-12">
+        <div class="form-group col-sm-1">
+            <label asp-for="Email">Email</label>
+            <input type="text" asp-for="Email" />
+            <span asp-validation-for="Email" style="color:darkred"></span>
+        </div>
+        <div class="form-group col-md-12">
+            <input type="submit" value="Send" class="btn btn-success" />
+        </div>
+    </div>
+</form>
