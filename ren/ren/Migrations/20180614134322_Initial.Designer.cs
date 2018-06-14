@@ -11,7 +11,7 @@ using System;
 namespace ren.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20180606174604_Initial")]
+    [Migration("20180614134322_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -61,6 +61,8 @@ namespace ren.Migrations
                     b.Property<string>("Password");
 
                     b.Property<int?>("RoleId");
+
+                    b.Property<int>("Subscribed");
 
                     b.HasKey("Id");
 

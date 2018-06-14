@@ -61,6 +61,8 @@ namespace ren.Migrations
 
                     b.Property<int?>("RoleId");
 
+                    b.Property<int>("Subscribed");
+
                     b.HasKey("Id");
 
                     b.HasIndex("RoleId");

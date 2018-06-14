@@ -8,11 +8,18 @@ using ren.Models;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
 using System.Net.Mail;
+using Microsoft.EntityFrameworkCore;
 
 namespace ren.Controllers
 {
     public class HomeController : Controller
     {
+        private ApplicationContext _context;
+        public HomeController(ApplicationContext context)
+        {
+            _context = context;
+        }
+
         public IActionResult Index()
         {
             ViewData["Message"] = "Home page.";
@@ -48,40 +55,49 @@ namespace ren.Controllers
         public async Task<IActionResult> EmailSender(int id = 1)
         {
             var adress = HttpContext.User.Identity.Name;
-            Debug.WriteLine(adress.ToString());
-            Debug.WriteLine(adress.ToString());
-            Debug.WriteLine(adress.ToString());
-            try
+
+            User user = await _context.Users
+                   .Include(u => u.Role)
+                   .FirstOrDefaultAsync(u => u.Email == adress);
+            if (user != null)
             {
-                SmtpClient smtpClient = new SmtpClient("mail7.meuhost.net", 25);
-                smtpClient.Credentials = new System.Net.NetworkCredential("info@goodstream.eu", "Info4!891");
-                smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
-                smtpClient.EnableSsl = true;
-                MailMessage mail = new MailMessage();
-                mail.From = new MailAddress("info@goodstream.eu");
-                mail.To.Add(new MailAddress(adress.ToString()));
-                mail.Subject = "Star Wars: Renegade - рассылка";
-                mail.Body = "Спасибо что оформили подписку на имейл рассылку новостей по проекту Star Wars: Renegade от студии Fly-Banana";
+                user.Subscribed = 1;
+                _context.Update(user);
+                await _context.SaveChangesAsync();
+
                 try
                 {
-                    await Task.Run(() =>
+                    SmtpClient smtpClient = new SmtpClient("mail7.meuhost.net", 25);
+                    smtpClient.Credentials = new System.Net.NetworkCredential("info@goodstream.eu", "Info4!891");
+                    smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+                    smtpClient.EnableSsl = true;
+                    MailMessage mail = new MailMessage();
+                    mail.From = new MailAddress("info@goodstream.eu");
+                    mail.To.Add(new MailAddress(adress.ToString()));
+                    mail.Subject = "Star Wars: Renegade - рассылка";
+                    mail.Body = "Спасибо что оформили подписку на имейл рассылку новостей по проекту Star Wars: Renegade от студии Fly-Banana";
+                    try
                     {
-                        smtpClient.Send(mail);
-                    });
+                        await Task.Run(() =>
+                        {
+                            smtpClient.Send(mail);
+                        });
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine("Exception caught in CreateMessage(): {0}",
+                                    ex.ToString());
+                    }
+                    string message = "Email sent to: " + adress;
+                    return RedirectToAction("Index");
                 }
+
                 catch (Exception ex)
                 {
-                    Debug.WriteLine("Exception caught in CreateMessage(): {0}",
-                                ex.ToString());
+                    return RedirectToAction("Index");
                 }
-                string message = "Email sent to: " + adress;
-                return RedirectToAction("Index");
             }
-
-            catch (Exception ex)
-            {
-                return RedirectToAction("Index");
-            }
+            return RedirectToAction("Index");
         }
 
         public IActionResult TryGame()

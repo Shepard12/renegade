@@ -67,7 +67,7 @@ namespace RolesApp.Controllers
                 User user = await _context.Users.FirstOrDefaultAsync(u => u.Email == model.Email);
                 if (user == null)
                 {
-                    user = new User { Email = model.Email, Password = model.Password };
+                    user = new User { Email = model.Email, Password = model.Password, Subscribed = 0  };
                     Role userRole = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "user");
                     if (userRole != null)
                         user.Role = userRole;
