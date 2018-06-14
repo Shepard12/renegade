@@ -178,7 +178,7 @@ namespace RolesApp.Controllers
                     MailMessage mail = new MailMessage();
                     mail.From = new MailAddress("info@goodstream.eu");
                     mail.To.Add(new MailAddress(email));
-                    mail.Subject = "Star Wars: Renegade - новая новость";
+                    mail.Subject = "Star Wars: Renegade - забыли пароль?";
                     mail.Body = "Вы забыли пароль? Ваш новый: " + finalString + " Поменять пароль всегда можно в личном кабинете.";
                     try
                     {
@@ -196,6 +196,68 @@ namespace RolesApp.Controllers
                 }
             }
             return RedirectToAction("Login");
+
+        }
+
+        [Authorize(Roles = "user")]
+        public async Task<IActionResult> Details()
+        {
+            string email = HttpContext.User.Identity.Name;
+
+            var user = await _context.Users
+                .SingleOrDefaultAsync(m => m.Email == email);
+            return View(user);
+        }
+
+        [Authorize(Roles = "user")]
+        public ActionResult UpdateEmail()
+        {
+            return View();
+        }
+
+        [Authorize(Roles = "user")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> UpdateEmail([Bind("NewEmail, Password")] EditEmailModel editEmail)
+        {
+            string email = HttpContext.User.Identity.Name;
+
+            var user = await _context.Users
+                .SingleOrDefaultAsync(m => m.Email == email && m.Password == editEmail.Password);
+            if (user != null)
+            {
+                user.Email = editEmail.NewEmail;
+                _context.Update(user);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Logout");
+            }
+            return RedirectToAction("Details");
+
+        }
+
+        [Authorize(Roles = "user")]
+        public ActionResult UpdatePass()
+        {
+            return View();
+        }
+
+        [Authorize(Roles = "user")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> UpdatePass([Bind("OldPassword, NewPassword1")] EditPasswordModel editPass)
+        {
+            string email = HttpContext.User.Identity.Name;
+
+            var user = await _context.Users
+                .SingleOrDefaultAsync(m => m.Email == email && m.Password == editPass.OldPassword);
+            if (user != null)
+            {
+                user.Password = editPass.NewPassword1;
+                _context.Update(user);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Logout");
+            }
+            return RedirectToAction("Details");
 
         }
     }

@@ -1,0 +1,28 @@
+﻿@model ren.Models.User
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "_AccountLayout";
+}
+
+<h2>Your data:</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+    </dl>
+</div>
+<a asp-action="UpdateEmail" asp-controller="Account" class="btn btn-info" style="color: white; outline: 0; margin-left: 5px;">Update Email</a>
+<a asp-action="UpdatePass" asp-controller="Account" class="btn btn-info" style="color: white; outline: 0; margin-left: 5px;">Update Pass</a>
